@@ -1,4 +1,4 @@
-package cloud.autotests.docs;
+package digatal_league.docs;
 
 import org.openqa.selenium.By;
 

@@ -1,4 +1,4 @@
-package cloud.autotests.docs;
+package digatal_league.docs;
 
 import com.codeborne.selenide.*;
 import org.openqa.selenium.Keys;

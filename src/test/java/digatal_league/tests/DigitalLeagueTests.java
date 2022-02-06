@@ -1,6 +1,7 @@
-package cloud.autotests.tests;
+package digatal_league.tests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selectors.withText;
@@ -12,15 +13,18 @@ import static org.openqa.selenium.By.linkText;
 
 
 
-public class GeneratedTests extends TestBase {
+public class DigitalLeagueTests extends TestBase {
+
+    @BeforeEach
+    void openSite() {
+        step("Открываем главную страницу: 'https://digitalleague.ru/'", () -> {
+            open("https://digitalleague.ru/");
+        });
+    }
 
     @Test
     @DisplayName("Page title should have header text")
     void titleTest() {
-        step("Открываем главную страницу: 'https://digitalleague.ru/'", () ->
-            open("https://digitalleague.ru/")
-        );
-
         step("Page title should have text 'Лига Цифровой Экономики'", () -> {
             String expectedTitle = "Лига Цифровой Экономики";
             String actualTitle = title();
@@ -28,22 +32,20 @@ public class GeneratedTests extends TestBase {
             assertThat(actualTitle).isEqualTo(expectedTitle);
         });
     }
+
     @Test
     @DisplayName("Проверка участника лиги")
     void leaguePartnersCheck() {
-        step("Открываем главную страницу: 'https://digitalleague.ru/'", () -> {
-            open("https://digitalleague.ru/");
-        });
-
         step("Нажать 'Участники лиги'", () -> {
                 $(withText("Участники")).click();
         });
 
         step("Переход на страницу участника: 'ИТ Философия'", () -> {
-                $(".league__partners-wrapper").$(linkText("https://www.fil-it.ru/")).click();
+                $x("//a[@href='https://www.fil-it.ru/']").click();
         });
 
         step("Проверка текущего URL", () -> {
+            switchTo().window(1);
             Assertions.assertEquals(url(), "https://www.fil-it.ru/");
         });
     }

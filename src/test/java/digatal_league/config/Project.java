@@ -1,4 +1,4 @@
-package cloud.autotests.config;
+package digatal_league.config;
 
 import org.aeonbits.owner.ConfigFactory;
 
