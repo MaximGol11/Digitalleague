@@ -1,17 +1,15 @@
 package cloud.autotests.tests;
 
-import cloud.autotests.helpers.DriverUtils;
-import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.openqa.selenium.By.partialLinkText;
+import static org.openqa.selenium.By.linkText;
+
 
 
 public class GeneratedTests extends TestBase {
@@ -38,11 +36,11 @@ public class GeneratedTests extends TestBase {
         });
 
         step("Нажать 'Участники лиги'", () -> {
-                $(withText("Участники лиги")).click();
+                $(withText("Участники")).click();
         });
 
         step("Переход на страницу участника: 'ИТ Философия'", () -> {
-                $(".league__partners-wrapper").$(partialLinkText("fil-it")).click();
+                $(".league__partners-wrapper").$(linkText("https://www.fil-it.ru/")).click();
         });
 
         step("Проверка текущего URL", () -> {
